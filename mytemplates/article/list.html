@@ -1,0 +1,17 @@
+{% extends "index.html" %}
+
+{% block body %}
+<div  class="center">
+    {% for article in articles %}
+    <div class="card w-50 m-3" style="display:table;margin:1em auto !important;">
+        <img class="card-img-top" src="/media/{{ article.thumbnail }}" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">{{ article.title }} </h5>
+            <p class="card-text">{{ article.content }} </p>
+            <a href="#" class="card-link">Read More</a>
+            <a href="#" class="card-link">Another link</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
