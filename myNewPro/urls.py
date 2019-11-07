@@ -20,7 +20,8 @@ from django.conf import settings
 
 urlpatterns = [
     url('admin/', admin.site.urls),
-    url('', include('myarticle.urls')),   
+    url('articles/', include('myarticle.urls', namespace='article')),
+    url('comments/', include('commenting.urls', namespace='comment')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,0 +1,13 @@
+{% extends "index.html" %}
+
+{% block body %}
+<div>
+    <h2>{{article.title}}</h2>
+    <img class="card-img-top" src="/media/{{ article.thumbnail }}" alt="Card image cap">
+    <p>{{article.content}}</p>
+    <div class="row">
+        <div class="col">{{ article.created_at | timesince }} ago</div>
+        <div class="col">{{ article.author }}</div>
+    </div>
+</div>
+{% endblock %}

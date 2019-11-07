@@ -1,0 +1,20 @@
+{% extends "index.html" %}
+
+{% block body %}
+<div>
+        <div class="row">
+                <form action="" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form }}
+                    <button type="submit">Submit</button>
+                </form>
+        </div>
+        <hr>
+        <div class="row">
+            {% for error in form.errors %}
+            {{ error }}
+            {% endfor %}
+        </div>
+</div>
+
+{% endblock %}

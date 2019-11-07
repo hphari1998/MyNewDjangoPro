@@ -7,9 +7,15 @@
         <img class="card-img-top" src="/media/{{ article.thumbnail }}" alt="Card image cap">
         <div class="card-body">
             <h5 class="card-title">{{ article.title }} </h5>
-            <p class="card-text">{{ article.content }} </p>
-            <a href="#" class="card-link">Read More</a>
-            <a href="#" class="card-link">Another link</a>
+            <p class="card-text">{{ article.content | truncatewords:20 }} </p>
+            <hr>
+            <div class="row">
+                <div class="col">{{ article.created_at | timesince }} ago</div>
+                <div class="col">{{ article.author }}</div>
+                <div class="col">
+                    <a href="{% url 'article:detail' article.id %}" class="card-link">Read More</a>
+                </div>
+            </div>
         </div>
     </div>
     {% endfor %}
