@@ -1,44 +1,43 @@
 {% extends "index.html" %}
 
-{% block body %}
-<div  class="center">
-        {% for comment in comments %}
-        <div class="card w-50 m-3" style="display:table;margin:1em auto !important;">
-            <div class="card-body">
-                <p class="card-text">{{ comment.comment | truncatewords:20 }} </p>
-                <div class="col">
-                    <a href="{% url 'comment:edits' comment.id %}" class="btn btn-secondary">Edit</a>
-                    <!-- <input type="button" value="Edit" class="btn btn-secondary"> -->
 
-                </div>
+{% block body %}
+<div class="center">
+    {% for comment in comments %}
+    <div class="card w-50 m-3" style="display:table;margin:1em auto !important;">
+        <div class="card-body" style="width: 40rem;">
+            <p class="card-text">{{ comment.comment | truncatewords:10 }} </p>
+            <div class="row">
+                <div class="col"></div>
                 <div class="col">
-                    <a href="#" class="btn btn-danger">Delete</a>
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="col">{{ comment.created_at | timesince }} ago</div>
-                    <div class="col">{{ comment.updated_at | timesince }} ago</div>
-                    <div class="col">{{ comment.author }}</div>
+                    <a href="{% url 'comment:edits' aid=comment.id %}" class="btn btn-secondary">Edit</a>
+                    <a href="{% url 'comment:delete' id=comment.id %}" class="btn btn-secondary">Edit</a>
                 </div>
             </div>
+            <hr>
+            <div class="row">
+                <div class="col">{{ comment.created_at | timesince }} ago</div>
+                <div class="col">{{ comment.updated_at | timesince }} ago</div>
+                <div class="col">{{ comment.author }}</div>
+            </div>
         </div>
+    </div>
+    {% endfor %}
+</div>
+<div>
+    <div class="row">
+        <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form }}
+            <button type="submit" class="btn btn-success">Submit</button>
+        </form>
+    </div>
+    <hr>
+    <div class="row">
+        {% for error in form.errors %}
+        {{ error }}
         {% endfor %}
     </div>
-
-<div>
-        <div class="row">
-                <form action="" method="POST" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    {{ form }}
-                    <button type="submit">Submit</button>
-                </form>
-        </div>
-        <hr>
-        <div class="row">
-            {% for error in form.errors %}
-            {{ error }}
-            {% endfor %}
-        </div>
 </div>
 
 

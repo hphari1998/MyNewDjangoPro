@@ -1,13 +1,55 @@
 {% extends "index.html" %}
+{% load markdown_deux_tags %}
 
 {% block body %}
-<div>
-    <h2>{{article.title}}</h2>
+<div class="larg-font">
+    <h2><i class="fa fa-newspaper-o" aria-hidden="true"></i> {{article.title}}</h2>
     <img class="card-img-top" src="/media/{{ article.thumbnail }}" alt="Card image cap">
-    <p>{{article.content}}</p>
+    <p>{{article.content|markdown }}</p>
     <div class="row">
-        <div class="col">{{ article.created_at | timesince }} ago</div>
-        <div class="col">{{ article.author }}</div>
+        <div class="col"><i class="fa fa-clock-o" aria-hidden="true"></i> {{ article.created_at | timesince }} ago</div>
+        <div class="col"><i class="fa fa-user" aria-hidden="true"></i> {{ article.author }}</div>
+    </div>
+</div>
+<div class="center container border mt-5">
+    <h2>Comments</h2>
+    {% for comment in comments %}
+    <div class="card w-50 m-3" style="display:table;margin:1em auto !important;">
+        <div class="card-body" style="width: 40rem;">
+            <p class="card-text">{{ comment.comment | truncatewords:10 }} </p>
+            <div class="row">
+                <div class="col"></div>
+                <div class="col">
+                    <a href="{% url 'comment:edits' id=comment.id %}" class="btn btn-secondary">Edit</a>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col">{{ comment.created_at | timesince }} ago</div>
+                <div class="col">{{ comment.updated_at | timesince }} ago</div>
+                <div class="col">{{ comment.author }}</div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+<div class="container border mt-2">
+        <h2>New Comment:</h2>
+    <div class="row pl-5 pt-5">
+        
+        <form action="/comments/" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <!-- <input hidden value="{{ article.id }}" name="article"/> -->
+            Description:<br>
+            {{comit.comment}}<br><br>
+            <button type="submit" class="btn btn-success">Submit</button>
+        </form>
+    </div>
+    <hr>
+    <div class="row">
+        {% for error in form.errors %}
+        {{ error }}
+        {% endfor %}
     </div>
 </div>
 {% endblock %}

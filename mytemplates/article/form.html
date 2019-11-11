@@ -1,13 +1,21 @@
 {% extends "index.html" %}
 
+{% block head %}
+{{ form.media }}
+{% endblock %}
 {% block body %}
 <div>
         <div class="row">
                 <form action="" method="POST" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    {{ form }}
-                    <button type="submit">Submit</button>
-                </form>
+                    {% csrf_token %}    
+                    Title:                
+                    {{ form.title }}<br><br>
+                    Thumbnail:<br>
+                    {{ form.thumbnail}}<br><br>
+                    Description:<br>
+                    {{form.content}}<br><br>
+                    <button type="submit" class="btn btn-success">Submit</button>
+                    </form>
         </div>
         <hr>
         <div class="row">

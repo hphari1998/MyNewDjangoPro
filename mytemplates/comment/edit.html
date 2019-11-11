@@ -2,14 +2,15 @@
 
 {% block body %}
 <div>
-    <h2>{{ comnt.comment}}</h2>
-        <!-- <div class="row">
-                <form action="" method="POST" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    {{ comnt.content }}
-                    <button type="submit">Save</button>
-                </form> -->
-        </div>
+    <!-- {{ comnt.content }} -->
+    <div class="row">
+        <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.comment }}
+            {{ comnt.content }}
+            <button type="submit">Save</button>
+        </form>
+    </div>
 </div>
 
 {% endblock %}
