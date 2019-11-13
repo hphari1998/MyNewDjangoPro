@@ -1,0 +1,37 @@
+{% extends "index.html" %}
+
+
+{% block createbtn %}
+<a href="{% url 'signin:signin' %}" class="btn btn-primary">Signin</a>
+{% endblock %}
+
+{% block body %}
+<div>
+    <h2>signup page</h2>
+    <form method="post" action="{% url 'signup:signup' %}">
+        {% csrf_token %}
+        <b>Username:</b>
+        <input type="text" name="username"> Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+        only.<br><br>
+        <b>First name:</b>
+        <input type="text" name="firstname"> Required.<br><br>
+        <b>Last name:</b>
+        <input type="text" name="lastname"> Optional.<br><br>
+        <b>Email:</b>
+        <input type="email" name="email"> Required. Inform a valid email address.<br><br>
+        <b>Password</b>
+        <input type="password" name="password">
+        <ul>
+            <li>Your password can't be too similar to your other personal information.</li>
+            <li>Your password must contain at least 8 characters.</li>
+            <li>Your password can't be a commonly used password.</li>
+            <li>Your password can't be entirely numeric.</li>
+        </ul><br><br>
+        <b>Password confirmation</b>
+        <input type="password" name="passwordConfirm"> Enter the same password as before, for verification.<br><br>
+
+        <button type="submit">Sign up</button>
+    </form>
+</div>
+
+{% endblock %}

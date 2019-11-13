@@ -1,6 +1,10 @@
 {% extends "index.html" %}
 {% load markdown_deux_tags %}
 
+{% block createbtn %}
+<a href="{% url 'article:create' %}" class="btn btn-primary">Create Article</a>
+{% endblock %}
+
 {% block body %}
 <div class="larg-font">
     <h2><i class="fa fa-newspaper-o" aria-hidden="true"></i> {{article.title}}</h2>

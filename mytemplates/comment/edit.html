@@ -1,5 +1,9 @@
 {% extends "index.html" %}
 
+{% block createbtn %}
+<a href="{% url 'article:create' %}" class="btn btn-primary">Create Article</a>
+{% endblock %}
+
 {% block body %}
 <div>
     <!-- {{ comnt.content }} -->

@@ -17,13 +17,16 @@ from django.conf.urls import url,include
 from django.contrib import admin
 from django.conf.urls.static import static
 from django.conf import settings
-
+from myNewPro.views import mainIndex
 from myarticle.views import create_article
 
 urlpatterns = [
+    url(r'^$', mainIndex, name='main' ),
     url('admin/', admin.site.urls),
     url('articles/', include('myarticle.urls', namespace='article')),
     url('comments/', include('commenting.urls', namespace='comment')),
+    url('signin/', include('signin.urls', namespace='signin')),
+    url('signup/', include('signup.urls', namespace='signup')),
 
 ]
 

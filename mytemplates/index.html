@@ -35,10 +35,19 @@
             My Hp Blog
         </a>
         <a href="{% url 'article:list' %}"><i class="fa fa-newspaper-o" aria-hidden="true"></i></a>
-        <a href="{% url 'article:create' %}" class="btn btn-primary">Create Article</a>
+        
+        {% block createbtn %}
+        <a href="{% url 'signin:signin' %}" class="btn btn-primary">Signin</a>
+        <a href="{% url 'signup:signup' %}" class="btn btn-primary">Signup</a>
+        {% endblock %}
     </nav>
     <div class="container">
-        {% block body %} {% endblock %}
+        {% block body %}
+        <h1>Welcom to My Blog</h1>
+        <img src="https://image.shutterstock.com/image-photo/blog-blogging-homepage-social-media-260nw-399265807.jpg" width="650" height="500"
+            alt="image">
+        <h4>Hello to my blog page please signin or signup</h4>
+        {% endblock %}
     </div>
     <footer align="center" style="height: 200px;padding-top: 2em;" class="bg-light">
         <b>Blog</b> <br>Blog@xyz.com<br>
@@ -54,4 +63,5 @@
         crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </body>
+
 </html>

@@ -1,0 +1,21 @@
+{% extends "index.html" %}
+
+
+{% block createbtn %}
+<a href="{% url 'signup:signup' %}" class="btn btn-primary">Signup</a>
+{% endblock %}
+
+{% block body %}
+<div>
+    <h2>signin page</h2>
+    <form method="post" action="{% url 'signin:signin' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <b>Email:</b>
+        <input type="email" name="email"><br><br>
+        <b>Password</b>
+        <input type="password" name="password"><br><br>
+        <button type="submit">Sign in</button>
+</div>
+
+{% endblock %}

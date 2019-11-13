@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'markdown_deux',
     'myarticle',
     'commenting',
-    'rest_framework',
+    'signin',
+    'signup',
 ]
 
 MIDDLEWARE = [

@@ -1,6 +1,10 @@
 {% extends "index.html" %}
 {% load markdown_deux_tags %}
 
+{% block createbtn %}
+<a href="{% url 'article:create' %}" class="btn btn-primary">Create Article</a>
+{% endblock %}
+
 {% block body %}
 <div class="center">
     {% for article in articles %}

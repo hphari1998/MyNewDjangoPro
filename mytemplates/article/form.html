@@ -1,5 +1,9 @@
 {% extends "index.html" %}
 
+
+{% block createbtn %}
+{% endblock %}
+
 {% block head %}
 {{ form.media }}
 {% endblock %}
@@ -11,7 +15,7 @@
                     Title:                
                     {{ form.title }}<br><br>
                     Thumbnail:<br>
-                    {{ form.thumbnail}}<br><br>
+                    <i class="btn btn-primary">{{ form.thumbnail}}</i><br><br>
                     Description:<br>
                     {{form.content}}<br><br>
                     <button type="submit" class="btn btn-success">Submit</button>
